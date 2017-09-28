@@ -13,6 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+/*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
+
+//ok
+Route::post('/membres', [
+  'uses' => 'MembreController@postMembre'
+]);
+//ok
+Route::get('/membres', [
+  'uses' => 'MembreController@getMembres'
+]);
+//ok
+Route::get('/membres/{id}', [
+  'uses' => 'MembreController@getMembre'
+]);
+
+Route::put('/membres/{id}', [
+  'uses' => 'MembreController@putMembre'
+]);
+
+Route::delete('/membres/{id}', [
+  'uses' => 'MembreController@deleteMembre'
+]);
