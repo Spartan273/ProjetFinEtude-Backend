@@ -60,3 +60,25 @@ Route::put('/articles/{id}', [
 Route::delete('/articles/{id}', [
   'uses' => 'ArticleController@deleteArticle'
 ]);
+
+//-------------------Routes Emprunt---------------------
+
+Route::post('/emprunts', [
+  'uses' => 'EmpruntController@postEmprunt'
+]);
+
+Route::get('/emprunts', [
+  'uses' => 'EmpruntController@getEmprunts'
+]);
+
+Route::get('/emprunts/{id}', [
+  'uses' => 'EmpruntController@getEmprunt'
+]);
+
+Route::put('/emprunts/{id}', [
+  'uses' => 'EmpruntController@putEmprunt'
+]);
+
+Route::delete('/emprunts/{id}', [
+  'uses' => 'EmpruntController@deleteEmprunt'
+]);
