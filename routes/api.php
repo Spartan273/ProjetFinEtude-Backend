@@ -17,15 +17,15 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
-//ok
+//-------------------Routes membres---------------------
 Route::post('/membres', [
   'uses' => 'MembreController@postMembre'
 ]);
-//ok
+
 Route::get('/membres', [
   'uses' => 'MembreController@getMembres'
 ]);
-//ok
+
 Route::get('/membres/{id}', [
   'uses' => 'MembreController@getMembre'
 ]);
@@ -36,4 +36,27 @@ Route::put('/membres/{id}', [
 
 Route::delete('/membres/{id}', [
   'uses' => 'MembreController@deleteMembre'
+]);
+
+
+//-------------------Routes Articles---------------------
+
+Route::post('/articles', [
+  'uses' => 'ArticleController@postArticle'
+]);
+
+Route::get('/articles', [
+  'uses' => 'ArticleController@getArticles'
+]);
+
+Route::get('/articles/{id}', [
+  'uses' => 'ArticleController@getArticle'
+]);
+
+Route::put('/articles/{id}', [
+  'uses' => 'ArticleController@putArticle'
+]);
+
+Route::delete('/articles/{id}', [
+  'uses' => 'ArticleController@deleteArticle'
 ]);

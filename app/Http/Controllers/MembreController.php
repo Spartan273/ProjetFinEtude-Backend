@@ -10,7 +10,7 @@ class MembreController extends Controller {
 
   public function postMembre(Request $request) {
 
-    $adresse = new Adresse();
+    $adresse = new Adresse;
     $adresse->noCivic = $request->input('noCivic');
     $adresse->app = $request->input('app');
     $adresse->rue = $request->input('rue');
@@ -18,10 +18,9 @@ class MembreController extends Controller {
     $adresse->ville = $request->input('ville');
     $adresse->province = $request->input('province');
 
-
     $adresse->save();
 
-    $membre = new Membre();
+    $membre = new Membre;
     $membre->nom = $request->input('nom');
     $membre->prenom = $request->input('prenom');
     $membre->id_adresse = $adresse->id;
@@ -30,6 +29,7 @@ class MembreController extends Controller {
     $membre->photo = $request->input('photo');
 
     $membre->save();
+    
     return response()->json(['membre'=> $membre, 'adresse'=> $adresse], 201);
 
   }

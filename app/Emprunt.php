@@ -8,7 +8,7 @@ class Emprunt extends Model
 {
   protected $fillable = ['dateEmprunt', 'dateRetour', 'id_emprunteur', 'id_article'];
 
-  public function membre() {
+  public function membres() {
     return $this->belongsTo('Membre');
   }
 
