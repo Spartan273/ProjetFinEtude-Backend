@@ -1,0 +1,29 @@
+[33mcommit 69a606bbb0d261928d3265dbdddea2f3015d4d77[m
+Author: Spartan273 <sami273@live.ca>
+Date:   Sat Sep 30 12:37:28 2017 -0400
+
+    ajout paquet jwt-auth
+
+[33mcommit 51621b386f169fcf396e9fa479f6ed6812bb97d6[m
+Author: Spartan273 <sami273@live.ca>
+Date:   Thu Sep 28 23:11:45 2017 -0400
+
+    ajout api pour emprunts
+
+[33mcommit 10877229c6fc2ec9491741dd832e0fef5ad22a6f[m
+Author: Spartan273 <sami273@live.ca>
+Date:   Thu Sep 28 21:58:11 2017 -0400
+
+    ajout api pour articles
+
+[33mcommit 1e7902459b3efd10db8f64b524a4721a3349a98c[m
+Author: Spartan273 <sami273@live.ca>
+Date:   Thu Sep 28 15:13:18 2017 -0400
+
+    ajout api pour membres
+
+[33mcommit b9109fdc7c85a6eb0093650592b5f127ed9288a5[m
+Author: Spartan273 <sami273@live.ca>
+Date:   Tue Sep 26 16:11:08 2017 -0400
+
+    new project
