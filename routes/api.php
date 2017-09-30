@@ -18,8 +18,12 @@ use Illuminate\Http\Request;
 });*/
 
 //-------------------Routes membres---------------------
+//Route::post('/membres', [
+  //'uses' => 'MembreController@postMembre'
+//]);
+
 Route::post('/membres', [
-  'uses' => 'MembreController@postMembre'
+  'uses' => 'MembreController@signup'
 ]);
 
 Route::get('/membres', [

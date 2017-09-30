@@ -29,7 +29,7 @@ class MembreController extends Controller {
     $membre->photo = $request->input('photo');
 
     $membre->save();
-    
+
     return response()->json(['membre'=> $membre, 'adresse'=> $adresse], 201);
 
   }
@@ -63,7 +63,7 @@ class MembreController extends Controller {
     $membre->prenom = $request->input('prenom');
     $membre->id_adresse = $adresse->id;
     $membre->courriel = $request->input('courriel');
-    $membre->password = $request->input('password');
+    $membre->password = bcrypt($request->input('password'));
     $membre->photo = $request->input('photo');
     $membre->save();
 
@@ -91,22 +91,41 @@ class MembreController extends Controller {
 
 
   //Authentification à developper
-  public function signup(Request $request){
+  public function signup(Request $request) {
 
     $this->validate($request, [
       'nom' => 'required',
       'prenom' => 'required',
-      'adresse' => 'required|exists:adresses,id',
       'courriel' => 'required|email|unique:membres',
-      'password' => 'required'
+      'password' => 'required',
+      'noCivic' => 'required',
+      'rue' => 'required',
+      'codePostal' => 'required',
+      'ville' => 'required',
+      'province' => 'required'
     ]);
 
-    $membre = new Membre([
-      'nom' => $request->input('nom'),
-      'prenom' => $request->input('prenom'),
-      'adresse' => $request->input('adresse'),
-      'courriel' => $request->input('courriel'),
-      'password' => $request->input('password')
-    ]);
+    $adresse = new Adresse;
+    $adresse->noCivic = $request->input('noCivic');
+    $adresse->app = $request->input('app');
+    $adresse->rue = $request->input('rue');
+    $adresse->codePostal = $request->input('codePostal');
+    $adresse->ville = $request->input('ville');
+    $adresse->province = $request->input('province');
+
+    $adresse->save();
+
+    $membre = new Membre;
+    $membre->nom = $request->input('nom');
+    $membre->prenom = $request->input('prenom');
+    $membre->id_adresse = $adresse->id;
+    $membre->courriel = $request->input('courriel');
+    $membre->password = bcrypt($request->input('password'));
+    $membre->photo = $request->input('photo');
+
+    $membre->save();
+
+    return response()->json(['message' => 'nouveau membre créé'], 201);
+
   }
 }
