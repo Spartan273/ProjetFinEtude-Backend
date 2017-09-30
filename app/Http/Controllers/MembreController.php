@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Membre;
 use App\Adresse;
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use JWTAuth;
 
 class MembreController extends Controller {
 
@@ -90,7 +92,7 @@ class MembreController extends Controller {
   }
 
 
-  //Authentification à developper
+  //Inscription d'un utilisateur
   public function signup(Request $request) {
 
     $this->validate($request, [
@@ -128,4 +130,30 @@ class MembreController extends Controller {
     return response()->json(['message' => 'nouveau membre créé'], 201);
 
   }
+
+  //Authentification de l'utilisateur avec jwt-auth
+  public function signin(Request $request) {
+
+    $this->validate($request, [
+      'courriel' => 'required|email',
+      'password' => 'required'
+    ]);
+
+    $credentials = $request->only('courriel', 'password');
+
+    try {
+      if (!$token = JWTAuth::attempt($credentials)) {
+        return response()->json(['error' => 'Identifiants non valides'], 401);
+      }
+    } catch (JWTException $e) {
+      return response()->json(['creation du token impossible'], 500);
+    }
+
+    //si l'authentification est réussie, envoi du token
+    return response()->json(['token' => $token]);
+
+  }
+
+
+
 }

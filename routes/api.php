@@ -26,6 +26,10 @@ Route::post('/membres', [
   'uses' => 'MembreController@signup'
 ]);
 
+Route::post('/membres/signin', [
+  'uses' => 'MembreController@signin'
+]);
+
 Route::get('/membres', [
   'uses' => 'MembreController@getMembres'
 ]);
