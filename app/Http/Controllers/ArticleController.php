@@ -6,17 +6,21 @@ use App\Adresse;
 use App\Article;
 use App\Emprunt;
 use Illuminate\Http\Request;
+use JWTAuth;
 
 class ArticleController extends Controller {
 
 
   public function postArticle(Request $request) {
 
+    //recupère le membre à partir du token
+    $membre = JWTAuth::parseToken()->toUser();
+
     $article = new Article();
     $article->nom = $request->input('nom');
     $article->description = $request->input('description');
     $article->categorie = $request->input('categorie');
-    $article->id_proprietaire = $request->input('id_proprietaire');
+    $article->id_proprietaire = $membre->id;
     $article->save();
 
     return response()->json(['article' => $article]);
@@ -31,7 +35,7 @@ class ArticleController extends Controller {
   }
 
   public function getArticle(Request $request, $id) {
-    
+
     $article = Article::with('membres')->find($id);
     if(!$article){
       return response()->json(['message' => 'Article introuvable'], 404);

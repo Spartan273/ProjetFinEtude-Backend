@@ -50,7 +50,8 @@ Route::delete('/membres/{id}', [
 //-------------------Routes Articles---------------------
 
 Route::post('/articles', [
-  'uses' => 'ArticleController@postArticle'
+  'uses' => 'ArticleController@postArticle',
+  'middleware' => 'auth.jwt'
 ]);
 
 Route::get('/articles', [
@@ -62,17 +63,20 @@ Route::get('/articles/{id}', [
 ]);
 
 Route::put('/articles/{id}', [
-  'uses' => 'ArticleController@putArticle'
+  'uses' => 'ArticleController@putArticle',
+  'middleware' => 'auth.jwt'
 ]);
 
 Route::delete('/articles/{id}', [
-  'uses' => 'ArticleController@deleteArticle'
+  'uses' => 'ArticleController@deleteArticle',
+  'middleware' => 'auth.jwt'
 ]);
 
 //-------------------Routes Emprunt---------------------
 
 Route::post('/emprunts', [
-  'uses' => 'EmpruntController@postEmprunt'
+  'uses' => 'EmpruntController@postEmprunt',
+  'middleware' => 'auth.jwt'
 ]);
 
 Route::get('/emprunts', [
@@ -84,9 +88,11 @@ Route::get('/emprunts/{id}', [
 ]);
 
 Route::put('/emprunts/{id}', [
-  'uses' => 'EmpruntController@putEmprunt'
+  'uses' => 'EmpruntController@putEmprunt',
+  'middleware' => 'auth.jwt'
 ]);
 
 Route::delete('/emprunts/{id}', [
-  'uses' => 'EmpruntController@deleteEmprunt'
+  'uses' => 'EmpruntController@deleteEmprunt',
+  'middleware' => 'auth.jwt'
 ]);
