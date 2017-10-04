@@ -22,7 +22,7 @@ use Illuminate\Http\Request;
   //'uses' => 'MembreController@postMembre'
 //]);
 
-Route::post('/membres', [
+Route::post('/membres/signup', [
   'uses' => 'MembreController@signup'
 ]);
 

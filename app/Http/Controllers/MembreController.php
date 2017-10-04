@@ -150,7 +150,11 @@ class MembreController extends Controller {
     }
 
     //si l'authentification est réussie, envoi du token
-    return response()->json(['token' => $token]);
+
+    //$membre = Membre::where('courriel', '=', $request->input('courriel'))->get();
+    $membre = Membre::with('adresses')->where('courriel', '=', $request->input('courriel'))->get();
+
+    return response()->json(['token' => $token, 'membre' => $membre]);
 
   }
 

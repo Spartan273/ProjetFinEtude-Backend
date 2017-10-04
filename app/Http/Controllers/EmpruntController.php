@@ -6,14 +6,22 @@ use App\Adresse;
 use App\Article;
 use App\Emprunt;
 use Illuminate\Http\Request;
+use JWTAuth;
+
 
 class EmpruntController extends Controller {
 
     public function postEmprunt(Request $request) {
+
+      $membre = JWTAuth::parseToken()->toUser();
+
+
       $emprunt = new Emprunt();
       $emprunt->dateEmprunt = $request->input('dateEmprunt');
       $emprunt->dateRetour = $request->input('dateRetour');
-      $emprunt->id_emprunteur = $request->input('id_emprunteur');
+      $emprunt->id_article = $membre->id;
+    //  $emprunt->id_emprunteur = $request->input('id_emprunteur');
+    $emprunt->id_emprunteur = $membre->id;
       $emprunt->id_article = $request->input('id_article');
       $emprunt->save();
 

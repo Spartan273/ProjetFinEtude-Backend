@@ -50,10 +50,13 @@ class ArticleController extends Controller {
       return response()->json(['message' => 'Document not found'], 404);
     }
 
+    $membre = JWTAuth::parseToken()->toUser();
+
     $article->nom = $request->input('nom');
     $article->description = $request->input('description');
     $article->categorie = $request->input('categorie');
-    $article->id_proprietaire = $request->input('id_proprietaire');
+    $article->id_proprietaire = $membre->id;
+  //  $article->id_proprietaire = $request->input('id_proprietaire');
     $article->save();
 
     return response()->json(['article' => $article], 200);
