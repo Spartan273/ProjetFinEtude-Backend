@@ -36,12 +36,21 @@ class EmpruntController extends Controller {
     }
 
     public function getEmprunt($id) {
-      $emprunt = Emprunt::with('membres')->find($id);
+    /*  $emprunt = Emprunt::with('membres')->find($id);
       if(!$emprunt){
         return response()->json(['message' => 'document introuvable'], 404);
       }
 
-      return response()->json(['emprunt' => $emprunt], 200);
+      return response()->json(['emprunt' => $emprunt], 200);*/
+
+      $emprunt = Emprunt::with('membres')->where('id_emprunteur', $id)->with('articles')->get();
+  //  $emprunt = Emprunt::where('id_emprunteur', $id)->get();
+        if(!$emprunt){
+          return response()->json(['message' => 'document introuvable'], 404);
+        }
+
+        return response()->json(['emprunt' => $emprunt], 200);
+
 
     }
 

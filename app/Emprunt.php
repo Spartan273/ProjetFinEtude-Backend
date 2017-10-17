@@ -13,7 +13,7 @@ class Emprunt extends Model
   }
 
   public function articles() {
-    return $this->belongsTo('Article', 'id_article');
+    return $this->belongsTo('App\Article', 'id_article');
   }
 
   public $timestamps = false;

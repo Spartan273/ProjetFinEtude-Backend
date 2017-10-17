@@ -36,7 +36,8 @@ class ArticleController extends Controller {
 
   public function getArticle(Request $request, $id) {
 
-    $article = Article::with('membres')->find($id);
+    //$article = Article::with('membres')->find($id);
+    $article = Article::with('membres')->where('id_proprietaire', $id)->get();
     if(!$article){
       return response()->json(['message' => 'Article introuvable'], 404);
     }
