@@ -96,3 +96,9 @@ Route::delete('/emprunts/{id}', [
   'uses' => 'EmpruntController@deleteEmprunt',
   'middleware' => 'auth.jwt'
 ]);
+
+//-------------------Routes Contact---------------------
+
+Route::post('/contact', [
+  'uses' => 'ContactController@postMail'
+]);

@@ -29,7 +29,8 @@ class ArticleController extends Controller {
 
   public function getArticles(Request $request) {
 
-    $articles = Article::with('membres')->get();
+    //$articles = Article::with('membres')->get();
+    $articles = Article::with('membres.adresses')->get();
 
     return response()->json(['articles' => $articles], 200);
   }
@@ -56,8 +57,8 @@ class ArticleController extends Controller {
     $article->nom = $request->input('nom');
     $article->description = $request->input('description');
     $article->categorie = $request->input('categorie');
-    $article->id_proprietaire = $membre->id;
-  //  $article->id_proprietaire = $request->input('id_proprietaire');
+  //  $article->id_proprietaire = $membre->id;
+    $article->id_proprietaire = $request->input('id_proprietaire');
     $article->save();
 
     return response()->json(['article' => $article], 200);

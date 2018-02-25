@@ -1,0 +1,10 @@
+<html>
+<head></head>
+<body>
+<h1>{{$title}}</h1>
+<br>
+<p>{{$content}}</p>
+<br>
+<p>{{$expediteur}}</p>
+</body>
+</html>
